@@ -68,10 +68,10 @@ def aim_reset():
 
 if __name__ == "__main__":
     logging_start()
+    execution = 0
+    passes = 0
+    fails = 0
     while True:
-        execution = 0
-        passes = 0
-        fails = 0
         try:
             execution += 1
             send_power_on()

@@ -1,13 +1,12 @@
 require 'selenium-webdriver'
-require 'headless'
 
-headless = Headless.new
-headless.start
+client = Selenium::WebDriver::Remote::Http::Default.new
+client.timeout = 300
 
-@driver = Selenium::WebDriver.for :firefox
+@driver = Selenium::WebDriver.for(:remotem :http_client => client)
 @wait = Selenium::WebDriver::Wait.new(:timeout => 60)
 
-@driver.navigate.to "http://10.10.l0.10/"
+@driver.navigate.to "http://10.10.10.10/"
 
 def wait_for_element(locator)
   element = @wait.until { @driver.find_element(locator) }
