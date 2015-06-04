@@ -43,6 +43,7 @@ def aim_login():
         logging.info("ADDER: Problem with Aim Login")
     
 def aim_shutdown():
+    logging.info("ADDER: Shutdown Aim")
     ret = subprocess.popen("ruby aim_shutdown.rb")
     if ret == 0:
         pass
@@ -50,6 +51,7 @@ def aim_shutdown():
         logging.info("ADDER: Problem with Aim Shutdown")  
 
 def aim_restart():
+    logging.info("ADDER: Restart Aim")
     ret = subprocess.popen("ruby aim_restart.rb")
     if ret == 0:
         pass
@@ -57,6 +59,7 @@ def aim_restart():
         logging.info("ADDER: Problem with Aim Restart")
     
 def aim_reset():
+    logging.info("ADDER: Reset Aim")
     ret = subprocess.popen("ruby aim_reset.rb")
     if ret == 0:
         pass
