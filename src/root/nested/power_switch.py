@@ -2,8 +2,13 @@ import logging
 import time
 import requests
 from requests.auth import HTTPDigestAuth
-import subprocess
+import os
 
+
+LOGIN_FLAG = False
+SHUTDOWN_FLAG = False
+RESTART_FLAG = False
+RESET_FLAG = False
 
 def logging_start():
     logging.basicConfig(filename="/var/log/aim-power/result.log",
@@ -35,34 +40,38 @@ def send_power_restart():
     assert(r.status_code == 200)
 
 def aim_login():
+    LOGIN_FLAG = False
     logging.info("ADDER: Login Check")
-    ret = subprocess.popen("ruby aim_login.rb")
+    ret = os.system("ruby aim_login.rb")
     if ret == 0:
-        pass
+        LOGIN_FLAG = True
     else:
         logging.info("ADDER: Problem with Aim Login")
     
 def aim_shutdown():
+    SHUTDOWN_FLAG = False
     logging.info("ADDER: Shutdown Aim")
-    ret = subprocess.popen("ruby aim_shutdown.rb")
+    ret = os.system("ruby aim_shutdown.rb")
     if ret == 0:
-        pass
+        SHUTDOWN_FLAG = True
     else:
         logging.info("ADDER: Problem with Aim Shutdown")  
 
 def aim_restart():
+    RESTART_FLAG = False
     logging.info("ADDER: Restart Aim")
-    ret = subprocess.popen("ruby aim_restart.rb")
+    ret = os.system("ruby aim_restart.rb")
     if ret == 0:
-        pass
+        RESTART_FLAG = True
     else:
         logging.info("ADDER: Problem with Aim Restart")
     
 def aim_reset():
+    RESET_FLAG = False
     logging.info("ADDER: Reset Aim")
-    ret = subprocess.popen("ruby aim_reset.rb")
+    ret = os.system("ruby aim_reset.rb")
     if ret == 0:
-        pass
+        RESET_FLAG = True
     else:
         logging.info("ADDER: Problem with Aim Reset")
 
@@ -88,10 +97,10 @@ if __name__ == "__main__":
             aim_login()
             aim_restart()
             aim_reset()
-            passes += 1
-            logging.info("ADDER: Exes: %d Passes: %d Fails: %d" %(execution, passes, fails))
-        except Exception as e:
-            fails += 1
+            if LOGIN_FLAG and SHUTDOWN_FLAG and RESET_FLAG and RESTART_FLAG:
+                passes += 1
+            else:
+                fails += 1
             logging.info("ADDER: Exes: %d Passes: %d Fails: %d" %(execution, passes, fails))
         except KeyboardInterrupt:
             logging_stop()

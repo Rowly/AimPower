@@ -3,7 +3,7 @@ require 'selenium-webdriver'
 client = Selenium::WebDriver::Remote::Http::Default.new
 client.timeout = 300
 
-@driver = Selenium::WebDriver.for(:remotem :http_client => client)
+@driver = Selenium::WebDriver.for(:remote :http_client => client)
 @wait = Selenium::WebDriver::Wait.new(:timeout => 60)
 
 @driver.navigate.to "http://10.10.10.10/"
