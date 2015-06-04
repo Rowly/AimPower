@@ -1,7 +1,7 @@
 import logging
 import time
 import requests
-from requests import HTTPDigestAuth
+from requests.auth import HTTPDigestAuth
 import subprocess
 
 
