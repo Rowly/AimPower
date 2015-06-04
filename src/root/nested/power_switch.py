@@ -68,7 +68,7 @@ if __name__ == "__main__":
     while True:
         execution = 0
         passes = 0
-        failes = 0
+        fails = 0
         try:
             execution += 1
             send_power_on()
