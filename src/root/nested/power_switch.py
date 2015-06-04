@@ -51,7 +51,7 @@ def aim_shutdown():
 
 def aim_restart():
     ret = subprocess.popen("ruby aim_restart.rb")
-   if ret == 0:
+    if ret == 0:
         pass
     else:
         logging.info("ADDER: Problem with Aim Restart")
