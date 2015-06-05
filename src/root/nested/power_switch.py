@@ -41,7 +41,7 @@ def send_power_restart():
 
 def aim_login():
     LOGIN_FLAG = False
-    logging.info("ADDER: Login Check")
+    logging.info("ADDER: Login Aim")
     ret = os.system("ruby aim_login.rb")
     if ret == 0:
         LOGIN_FLAG = True
@@ -50,7 +50,7 @@ def aim_login():
     
 def aim_shutdown():
     SHUTDOWN_FLAG = False
-    logging.info("ADDER: Shutdown Aim")
+    logging.info("ADDER: Login and Shutdown Aim")
     ret = os.system("ruby aim_shutdown.rb")
     if ret == 0:
         SHUTDOWN_FLAG = True
@@ -59,7 +59,7 @@ def aim_shutdown():
 
 def aim_restart():
     RESTART_FLAG = False
-    logging.info("ADDER: Restart Aim")
+    logging.info("ADDER: Login and Restart Aim")
     ret = os.system("ruby aim_restart.rb")
     if ret == 0:
         RESTART_FLAG = True
@@ -68,7 +68,7 @@ def aim_restart():
     
 def aim_reset():
     RESET_FLAG = False
-    logging.info("ADDER: Reset Aim")
+    logging.info("ADDER: Login and Reset Aim")
     ret = os.system("ruby aim_reset.rb")
     if ret == 0:
         RESET_FLAG = True
