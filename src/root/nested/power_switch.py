@@ -107,6 +107,9 @@ if __name__ == "__main__":
             send_power_restart()
             time.sleep(60)
             
+            aim_restart()
+            time.sleep(60)
+            
             aim_reset()
             time.sleep(60)
             
@@ -117,3 +120,4 @@ if __name__ == "__main__":
             logging.info("ADDER: Exes: %d Passes: %d Fails: %d" %(execution, passes, fails))
         except KeyboardInterrupt:
             logging_stop()
+            break
