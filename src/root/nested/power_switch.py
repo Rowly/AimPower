@@ -4,10 +4,10 @@ import requests
 from requests.auth import HTTPDigestAuth
 import os
 
-LOGIN_FLAG = False
-SHUTDOWN_FLAG = False
-RESTART_FLAG = False
-RESET_FLAG = False
+global LOGIN_FLAG
+global SHUTDOWN_FLAG
+global RESTART_FLAG
+global RESET_FLAG
 
 def logging_start():
     logging.basicConfig(filename="/var/log/aim-power/result.log",
@@ -116,7 +116,7 @@ if __name__ == "__main__":
                 passes += 1
             else:
                 fails += 1
-            logging.info("login: %s shutdown: %s reset: %s restart: %s" % (str(LOGIN_FLAG), str(SHUTDOWN_FLAG), str(RESET_FLAG), str(RESTART_FLAG)))
+            logging.info("ADDER: login: %s shutdown: %s reset: %s restart: %s" % (str(LOGIN_FLAG), str(SHUTDOWN_FLAG), str(RESET_FLAG), str(RESTART_FLAG)))
             logging.info("ADDER: Exes: %d Passes: %d Fails: %d" %(execution, passes, fails))
         except KeyboardInterrupt:
             logging_stop()
