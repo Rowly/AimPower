@@ -40,7 +40,6 @@ def send_power_restart():
     assert(r.status_code == 200)
 
 def aim_login():
-    time.sleep(20)
     LOGIN_FLAG = False
     logging.info("ADDER: Login Check")
     ret = os.system("ruby aim_login.rb")
@@ -50,7 +49,6 @@ def aim_login():
         logging.info("ADDER: Problem with Aim Login")
     
 def aim_shutdown():
-    time.sleep(20)
     SHUTDOWN_FLAG = False
     logging.info("ADDER: Shutdown Aim")
     ret = os.system("ruby aim_shutdown.rb")
@@ -60,7 +58,6 @@ def aim_shutdown():
         logging.info("ADDER: Problem with Aim Shutdown")  
 
 def aim_restart():
-    time.sleep(20)
     RESTART_FLAG = False
     logging.info("ADDER: Restart Aim")
     ret = os.system("ruby aim_restart.rb")
@@ -70,7 +67,6 @@ def aim_restart():
         logging.info("ADDER: Problem with Aim Restart")
     
 def aim_reset():
-    time.sleep(20)
     RESET_FLAG = False
     logging.info("ADDER: Reset Aim")
     ret = os.system("ruby aim_reset.rb")
@@ -88,19 +84,35 @@ if __name__ == "__main__":
         try:
             execution += 1
             send_power_on()
+            time.sleep(60)
+            
             aim_login()
+            time.sleep(60)
+            
             send_power_off()
             time.sleep(60)
+            
             send_power_on()
+            time.sleep(60)
+            
             aim_login()
+            time.sleep(60)
+            
             send_power_restart()
+            time.sleep(60)
+            
             aim_login()
+            time.sleep(60)
+            
             aim_shutdown()
             time.sleep(60)
+            
             send_power_restart()
-            aim_login()
-            aim_restart()
+            time.sleep(60)
+            
             aim_reset()
+            time.sleep(60)
+            
             if LOGIN_FLAG and SHUTDOWN_FLAG and RESET_FLAG and RESTART_FLAG:
                 passes += 1
             else:
