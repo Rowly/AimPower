@@ -4,10 +4,10 @@ import requests
 from requests.auth import HTTPDigestAuth
 import os
 
-LOGIN_FLAG
-SHUTDOWN_FLAG
-RESTART_FLAG
-RESET_FLAG
+LOGIN_FLAG = False
+SHUTDOWN_FLAG = False
+RESTART_FLAG = False
+RESET_FLAG = False
 
 def logging_start():
     logging.basicConfig(filename="/var/log/aim-power/result.log",
@@ -39,6 +39,7 @@ def send_power_restart():
     assert(r.status_code == 200)
 
 def aim_login():
+    global LOGIN_FLAG
     LOGIN_FLAG = False
     logging.info("ADDER: Login Aim")
     ret = os.system("ruby aim_login.rb")
@@ -48,6 +49,7 @@ def aim_login():
         logging.info("ADDER: Problem with Aim Login")
     
 def aim_shutdown():
+    global SHUTDOWN_FLAG
     SHUTDOWN_FLAG = False
     logging.info("ADDER: Login and Shutdown Aim")
     ret = os.system("ruby aim_shutdown.rb")
@@ -57,6 +59,7 @@ def aim_shutdown():
         logging.info("ADDER: Problem with Aim Shutdown")  
 
 def aim_restart():
+    global RESTART_FLAG
     RESTART_FLAG = False
     logging.info("ADDER: Login and Restart Aim")
     ret = os.system("ruby aim_restart.rb")
@@ -66,6 +69,7 @@ def aim_restart():
         logging.info("ADDER: Problem with Aim Restart")
     
 def aim_reset():
+    global RESET_FLAG
     RESET_FLAG = False
     logging.info("ADDER: Login and Reset Aim")
     ret = os.system("ruby aim_reset.rb")
@@ -110,6 +114,12 @@ if __name__ == "__main__":
             time.sleep(60)
             
             aim_reset()
+            time.sleep(60)
+            
+            aim_login()
+            time.sleep(60)
+            
+            send_power_off()
             time.sleep(60)
             
             if LOGIN_FLAG and SHUTDOWN_FLAG and RESET_FLAG and RESTART_FLAG:
