@@ -25,7 +25,7 @@ element.click
 
 wait_for_element(:link_text => "DASHBOARD")
 
-@driver.navigate.to "http://10.10.10.10/admin/process_power.php?mode=restar"
+@driver.navigate.to "http://10.10.10.10/admin/process_power.php?mode=restart"
 
 
 @driver.quit
