@@ -28,7 +28,7 @@ wait_for_element(:link_text => "DASHBOARD")
 element = wait_for_element(:link_text => "Updates")
 element.click
 
-element = wait_for_element(:link_text => "Reset Aim Configuration")
+element = wait_for_element(:link_text => "Reset AIM Configuration")
 element.click
 
 element = wait_for_element(:css => "#confirm_reset_link")
