@@ -4,10 +4,10 @@ import requests
 from requests.auth import HTTPDigestAuth
 import os
 
-global LOGIN_FLAG
-global SHUTDOWN_FLAG
-global RESTART_FLAG
-global RESET_FLAG
+LOGIN_FLAG
+SHUTDOWN_FLAG
+RESTART_FLAG
+RESET_FLAG
 
 def logging_start():
     logging.basicConfig(filename="/var/log/aim-power/result.log",
