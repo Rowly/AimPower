@@ -101,9 +101,6 @@ if __name__ == "__main__":
             send_power_restart()
             time.sleep(60)
             
-            aim_login()
-            time.sleep(60)
-            
             aim_shutdown()
             time.sleep(60)
             
