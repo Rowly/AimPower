@@ -59,7 +59,7 @@ def aim_login():
         wait.until(EC.presense_of_element_located((By.CSS_SELECTOR, "#password"))).send_keys("password")
         wait.until(EC.presense_of_element_located((By.CSS_SELECTOR, "#login"))).click()
         LOGIN_FLAG = wait.until(EC.presense_of_element_located((By.LINK_TEXT, "DASHBOARD"))).is_displayed()
-    except TimeoutException as e:
+    except Exception as e:
         logging.info("ADDER: Problem with Aim Login - Stacktrace: %s" %e)
     finally:
         driver.quit()
@@ -86,7 +86,7 @@ def aim_shutdown():
         found = driver.find_elements((By.LINK_TEXT, "DASHBOARD"))
         if len(found) == 0:
             SHUTDOWN_FLAG = True
-    except TimeoutException as e:
+    except Exception as e:
         logging.info("ADDER: Problem with Aim Shutdown - Stacktrace: %s" %e)
     finally:
         driver.quit()
@@ -111,7 +111,7 @@ def aim_restart():
         time.sleep(20)
         driver.refresh()
         RESTART_FLAG = wait.until(EC.presense_of_element_located((By.LINK_TEXT, "DASHBOARD"))).is_displayed()
-    except TimeoutException as e:
+    except Exception as e:
         logging.info("ADDER: Problem with Aim Restart - Stacktrace: %s" %e)
     finally:
         driver.quit()
@@ -137,7 +137,7 @@ def aim_reset():
         wait.until(EC.presense_of_element_located((By.CSS_SELECTOR, "#confirm_reset_link"))).click()
         time.sleep(120)        
         RESET_FLAG = wait.until(EC.presense_of_element_located((By.LINK_TEXT, "DASHBOARD"))).is_displayed()
-    except TimeoutException as e:
+    except Exception as e:
         logging.info("ADDER: Problem with Aim Reset - Stacktrace: %s" %e)
     finally:
         driver.quit()
