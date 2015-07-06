@@ -110,7 +110,7 @@ def aim_restart():
         driver.get("http://10.10.10.10/admin/process_power.php?mode=restart")
         time.sleep(20)
         driver.refresh()
-        RESTART_FLAG = wait.until(EC.presense_of_element_located((By.LINK_TEXT, "DASHBOARD"))).is_displayed()
+        RESTART_FLAG = wait.until(EC.presence_of_element_located((By.LINK_TEXT, "DASHBOARD"))).is_displayed()
     except Exception as e:
         logging.info("ADDER: Problem with Aim Restart - Stacktrace: %s" %e)
     finally:
@@ -128,15 +128,15 @@ def aim_reset():
     try:
         driver, wait = start_driver()
         driver.get("http://10.10.10.10/")
-        wait.until(EC.presense_of_element_located((By.CSS_SELECTOR, "#username"))).send_keys("admin")
-        wait.until(EC.presense_of_element_located((By.CSS_SELECTOR, "#password"))).send_keys("password")
-        wait.until(EC.presense_of_element_located((By.CSS_SELECTOR, "#login"))).click()
-        wait.until(EC.presense_of_element_located((By.LINK_TEXT, "DASHBOARD"))).is_displayed()
-        wait.until(EC.presense_of_element_located((By.LINK_TEXT, "UPDATES"))).click()
-        wait.until(EC.presense_of_element_located((By.LINK_TEXT, "Reset AIM Configuration"))).click()
-        wait.until(EC.presense_of_element_located((By.CSS_SELECTOR, "#confirm_reset_link"))).click()
+        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#username"))).send_keys("admin")
+        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#password"))).send_keys("password")
+        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#login"))).click()
+        wait.until(EC.presence_of_element_located((By.LINK_TEXT, "DASHBOARD"))).is_displayed()
+        wait.until(EC.presence_of_element_located((By.LINK_TEXT, "UPDATES"))).click()
+        wait.until(EC.presence_of_element_located((By.LINK_TEXT, "Reset AIM Configuration"))).click()
+        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#confirm_reset_link"))).click()
         time.sleep(120)        
-        RESET_FLAG = wait.until(EC.presense_of_element_located((By.LINK_TEXT, "DASHBOARD"))).is_displayed()
+        RESET_FLAG = wait.until(EC.presence_of_element_located((By.LINK_TEXT, "DASHBOARD"))).is_displayed()
     except Exception as e:
         logging.info("ADDER: Problem with Aim Reset - Stacktrace: %s" %e)
     finally:
@@ -155,29 +155,29 @@ if __name__ == "__main__":
     while True:
         try:
             execution += 1
-            send_power_on()
-            time.sleep(60)
+            #send_power_on()
+            #time.sleep(60)
+            
+            #aim_login()
+            #time.sleep(60)
+            
+            #send_power_off()
+            #time.sleep(60)
+            
+            #send_power_on()
+            #time.sleep(60)
             
             aim_login()
             time.sleep(60)
             
-            send_power_off()
-            time.sleep(60)
+            #send_power_restart()
+            #time.sleep(60)
             
-            send_power_on()
-            time.sleep(60)
+            #aim_shutdown()
+            #time.sleep(60)
             
-            aim_login()
-            time.sleep(60)
-            
-            send_power_restart()
-            time.sleep(60)
-            
-            aim_shutdown()
-            time.sleep(60)
-            
-            send_power_restart()
-            time.sleep(60)
+            #send_power_restart()
+            #time.sleep(60)
             
             aim_restart()
             time.sleep(60)
@@ -185,13 +185,14 @@ if __name__ == "__main__":
             aim_reset()
             time.sleep(60)
             
-            aim_login()
-            time.sleep(60)
+            #aim_login()
+            #time.sleep(60)
             
-            send_power_off()
-            time.sleep(60)
+            #send_power_off()
+            #time.sleep(60)
             
-            if LOGIN_FLAG and SHUTDOWN_FLAG and RESET_FLAG and RESTART_FLAG:
+            #if LOGIN_FLAG and SHUTDOWN_FLAG and RESET_FLAG and RESTART_FLAG:
+            if LOGIN_FLAG:
                 passes += 1
             else:
                 fails += 1
