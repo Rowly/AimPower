@@ -54,7 +54,7 @@ def aim_login():
     logging.info("ADDER: Login Aim")
     try:
         driver, wait = start_driver()
-        driver.navigate.to("http://10.10.10.10/")
+        driver.get("http://10.10.10.10/")
         wait.until(EC.presense_of_element_located((By.CSS_SELECTOR, "#username"))).send_keys("admin")
         wait.until(EC.presense_of_element_located((By.CSS_SELECTOR, "#password"))).send_keys("password")
         wait.until(EC.presense_of_element_located((By.CSS_SELECTOR, "#login"))).click()
@@ -75,7 +75,7 @@ def aim_shutdown():
     logging.info("ADDER: Login and Shutdown Aim")
     try:
         driver, wait = start_driver()
-        driver.navigate.to("http://10.10.10.10/")
+        driver.get("http://10.10.10.10/")
         wait.until(EC.presense_of_element_located((By.CSS_SELECTOR, "#username"))).send_keys("admin")
         wait.until(EC.presense_of_element_located((By.CSS_SELECTOR, "#password"))).send_keys("password")
         wait.until(EC.presense_of_element_located((By.CSS_SELECTOR, "#login"))).click()
@@ -102,7 +102,7 @@ def aim_restart():
     logging.info("ADDER: Login and Restart Aim")
     try:
         driver, wait = start_driver()
-        driver.navigate.to("http://10.10.10.10/")
+        driver.get("http://10.10.10.10/")
         wait.until(EC.presense_of_element_located((By.CSS_SELECTOR, "#username"))).send_keys("admin")
         wait.until(EC.presense_of_element_located((By.CSS_SELECTOR, "#password"))).send_keys("password")
         wait.until(EC.presense_of_element_located((By.CSS_SELECTOR, "#login"))).click()
@@ -127,7 +127,7 @@ def aim_reset():
     logging.info("ADDER: Login and Reset Aim")
     try:
         driver, wait = start_driver()
-        driver.navigate.to("http://10.10.10.10/")
+        driver.get("http://10.10.10.10/")
         wait.until(EC.presense_of_element_located((By.CSS_SELECTOR, "#username"))).send_keys("admin")
         wait.until(EC.presense_of_element_located((By.CSS_SELECTOR, "#password"))).send_keys("password")
         wait.until(EC.presense_of_element_located((By.CSS_SELECTOR, "#login"))).click()
