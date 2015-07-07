@@ -144,7 +144,7 @@ def aim_reset():
         wait.until(EC.presence_of_element_located((By.LINK_TEXT, "configured"))).click()
         wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#role_solo"))).click()
         wait.until(EC.presence_of_element_located((By.LINK_TEXT, "Save"))).click()
-        #RESET_FLAG = wait.until(EC.presence_of_element_located((By.LINK_TEXT, "DASHBOARD"))).is_displayed()
+        RESET_FLAG = wait.until(EC.presence_of_element_located((By.LINK_TEXT, "DASHBOARD"))).is_displayed()
     except Exception as e:
         logging.info("ADDER: Problem with Aim Reset - Stacktrace: %s" %e)
     finally:
@@ -199,8 +199,7 @@ if __name__ == "__main__":
             #send_power_off()
             #time.sleep(60)
             
-            #if LOGIN_FLAG and SHUTDOWN_FLAG and RESET_FLAG and RESTART_FLAG:
-            if LOGIN_FLAG:
+            if LOGIN_FLAG and RESET_FLAG and RESTART_FLAG:
                 passes += 1
             else:
                 fails += 1
