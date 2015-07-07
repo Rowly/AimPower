@@ -136,7 +136,7 @@ def aim_reset():
         wait.until(EC.presence_of_element_located((By.LINK_TEXT, "Reset HMX Manager Configuration"))).click()
         wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#confirm_reset_link"))).click()
         time.sleep(120)
-        wait.until(EC.presence_of_element_located((By.LINK_TEXT, "Restart Now"))).click()
+        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "a[href$='mode=restart']"))).click()
         driver.get("http://10.10.10.10/")
         wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#username"))).send_keys("admin")
         wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#password"))).send_keys("password")
