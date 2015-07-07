@@ -133,7 +133,7 @@ def aim_reset():
         wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#login"))).click()
         wait.until(EC.presence_of_element_located((By.LINK_TEXT, "DASHBOARD"))).is_displayed()
         wait.until(EC.presence_of_element_located((By.LINK_TEXT, "Updates"))).click()
-        wait.until(EC.presence_of_element_located((By.LINK_TEXT, "Reset AIM Configuration"))).click()
+        wait.until(EC.presence_of_element_located((By.LINK_TEXT, "Reset HMX Manager Configuration"))).click()
         wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#confirm_reset_link"))).click()
         time.sleep(120)
         wait.until(EC.presence_of_element_located((By.LINK_TEXT, "Restart Now"))).click()
